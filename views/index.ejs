@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>netflix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="navigation flex">
+            <div class="logo">
+                <img src="logo1.png" alt="">
+            </div>
+            
+            <div class="navbar flex" id="navbar">
+                <div class="left-nav flex">
+                    <ul class="flex menu">
+                        <li>Home</li>
+                        <li>Tv Shows</li>
+                        <li>Movies</li>
+                        <li>New & Popular</li>
+                        <li>My List</li>
+                    </ul>
+                </div>
+
+                <div class="right-nav flex">
+                    <span class="fa fa-search fa" aria-hidden="true">
+                        <p>Children</p>
+                    </span>
+                    <span class="fa fa-bell-o fa" aria-hidden="true"></span>
+                    <img src="chimpu.jpg" alt="">
+                    <span class="fa fa-caret-down fa " aria-hidden="true"></span>
+                </div>
+              </div>
+              <span class="togglebtn" onclick="toggle()">&#9776;</span>
+        </div>
+
+          <div class="inner">
+                <div class="banner flex">
+                    <h3>Season 1</h3>
+                    <h1>Sacred Games</h1>
+                      <div class="banner-button flex">
+                        <button class="btn"><span class="fa fa-play play" aria-hidden="true"></span>Play</button>
+                        <button class="btn1 btn"><span class="fa fa-info-circle play info" aria-hidden="true"></span>More</button>
+                      </div>
+                  <div>
+            </div>
+          
+            
+
+      <div class="crousel">
+        <h3>Episodes</h3>
+        <div class="crousel-slider">
+          <div class="crousel-list">
+            <div class="crousel-item">
+              <!-- <div class="top-left">Bottom Left</div> -->
+              <!-- <div class="mySlides fade"> -->
+              <img src="<%= episodes[0].img %>" alt="">
+              <!-- </div> -->
+            </div>
+            <div class="crousel-item">
+              <!-- <div class="top-left">Bottom Left</div> -->
+              <img src="<%= episodes[1].img %>" alt="">
+            </div>
+            <div class="crousel-item">
+              <img src="<%= episodes[2].img %>" alt="">
+            </div>
+            <div class="crousel-item">
+              <img src="<%= episodes[3].img %>" alt="">
+            </div>
+            <div class="crousel-item">
+              <img src="<%= episodes[4].img %>" alt="">
+            </div>
+            <div class="crousel-item">
+              <img src="<%= episodes[5].img %>" alt="">
+            </div>
+            <div class="crousel-item">
+              <img src="<%= episodes[6].img %>" alt="">
+            </div>
+          </div>
+        </div>   
+      </div>
+    </div>
+    
+
+    <div class="video-container">
+        <div class="color-overlay">
+          
+          <video autoplay loop muted> 
+            <source src="sacred.mp4">
+          </video>
+
+            <!-- <div class="slideshow-container">
+              <div class="mySlides fade">
+                <img src="<%= characters[0].img %>" style="width:100%" alt="">
+            </div>
+            <div class="mySlides fade">
+              <img src="<%= characters[1].img %>" style="width:100%" alt="">
+            </div> -->
+            <!-- <div class="mySlides fade">
+              <img src="<%= characters[2].img %>" style="width:100%" alt="">
+            </div>
+            <div class="mySlides fade">
+              <img src="<%= characters[3].img %>" style="width:100%" alt="">
+            </div>
+            <div class="mySlides fade">
+              <img src="<%= characters[4].img %>" style="width:100%" alt="">
+            </div> -->
+
+              <!-- <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="img2.jpg" style="width:100%" alt="">
+              </div> -->
+            <!-- </div> -->
+        </div>
+    </div>
+
+    <script>
+   
+ 
+
+let navbar = document.getElementById("navbar");
+const toggle = () => {
+  if(navbar.style.display == "none"){
+    navbar.style.display = "block"
+    navbar.style.textAlign = "left"
+  }
+  else{
+    navbar.style.display = "none"
+  }
+}
+
+function crousel(){
+  let craouselSlider = document.querySelector(".crousel-slider");
+  let list = document.querySelector(".crousel-list");
+  let item = document.querySelector(".crousel-item");
+  let list2;
+
+  const speed = 1;
+  const width = list.offsetWidth;
+  let x = 0;
+  let x2 = width;
+  function clone(){
+    list2 = list.cloneNode(true);
+    craouselSlider.appendChild(list2);
+    list2.style.left = `${width}px`;
+  }
+  function moveFirst(){
+    x -= speed;
+    if(width >= Math.abs(x)){
+      list.style.left = `${x}px`
+    }else{
+      x = width;
+    }
+  }
+
+    function moveSecond(){
+      x2 -= speed;
+      if(list.offsetWidth >= Math.abs(x2)){
+        list2.style.left = `${x2}px`;
+      }else
+      {
+        x2 = width;
+      }
+    }
+
+    function hover(){
+      clearInterval(a);
+      clearInterval(b);
+    }
+    function unhover(){
+      a = setInterval(moveFirst,10);
+      b = setInterval(moveSecond,10);
+    }
+
+    clone();
+
+    // let a = setInterval
+    let a = setInterval(moveFirst,10);
+    let b = setInterval(moveSecond,10);
+
+    craouselSlider.addEventListener("mouseenter", hover);
+    craouselSlider.addEventListener("mouseenter", unhover);
+}
+crousel();
+</script>
+        
+</body>
+</html>
